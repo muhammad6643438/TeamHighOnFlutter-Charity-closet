@@ -1,3 +1,5 @@
+![charity-closet](https://github.com/user-attachments/assets/c6973595-c92c-4e30-b9c9-6dd8d701c41f)
+
 ## Project Overview
 
 This project consists of three main modules:
@@ -106,5 +108,4 @@ Make sure you're using Flutter version 3.24.4 for development:
 ## License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details
-![charity-closet](https://github.com/user-attachments/assets/c6973595-c92c-4e30-b9c9-6dd8d701c41f)
 
