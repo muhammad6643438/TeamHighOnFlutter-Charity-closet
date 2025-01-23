@@ -10,6 +10,13 @@ final authViewModel = ChangeNotifierProvider<AuthViewModel>(
 class AuthViewModel extends ChangeNotifier {
   late BuildContext context;
 
+  bool isLoading = false;
+
+  void updateLoading(bool value) {
+    isLoading = value;
+    notifyListeners();
+  }
+
   void init(BuildContext context) {
     this.context = context;
   }

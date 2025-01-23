@@ -3,11 +3,16 @@ import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 
-class RecentFiles extends StatelessWidget {
+class RecentFiles extends StatefulWidget {
   const RecentFiles({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<RecentFiles> createState() => _RecentFilesState();
+}
+
+class _RecentFilesState extends State<RecentFiles> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,34 +25,61 @@ class RecentFiles extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Clients List",
-            style: Theme.of(context).textTheme.titleMedium,
+            "Donations/Disposals List",
+            style: Theme.of(context)
+                .textTheme
+                .titleLarge
+                ?.copyWith(fontWeight: FontWeight.bold),
           ),
+          SizedBox(height: defaultPadding),
           SizedBox(
             width: double.infinity,
             child: DataTable(
               columnSpacing: defaultPadding,
               // minWidth: 600,
               columns: [
-                DataColumn(
-                  label: Text("Name"),
-                ),
-                DataColumn(
-                  label: Text("Amount"),
-                ),
-                DataColumn(
-                  label: Text("Advance"),
-                ),
-                DataColumn(
-                  label: Text("Balance"),
-                ),
-                DataColumn(
-                  label: Text("More"),
-                ),
+                DataColumn(label: Text("Id")),
+                DataColumn(label: Text("Donator")),
+                DataColumn(label: Text("Dontaion Type")),
+                DataColumn(label: Text("Description")),
+                DataColumn(label: Text("Status")),
               ],
               rows: List.generate(
                 demoRecentFiles.length,
-                (index) => recentFileDataRow(demoRecentFiles[index]),
+                (i) {
+                  var fileInfo = demoRecentFiles[i];
+                  return DataRow(
+                    cells: [
+                      DataCell(Text("${i + 1}.")),
+                      DataCell(Text(fileInfo.donator ?? "Anonymous")),
+                      DataCell(Text(fileInfo.type ?? "Donation")),
+                      DataCell(Text(fileInfo.description ?? "2 shirts")),
+                      DataCell(
+                        DropdownButton<DonationStatus>(
+                          value: fileInfo.status,
+                          onChanged: (DonationStatus? newValue) {
+                            setState(() {
+                              fileInfo.status = newValue;
+                            });
+                          },
+                          items: DonationStatus.values
+                              .map((DonationStatus status) {
+                            return DropdownMenuItem<DonationStatus>(
+                              value: status,
+                              child: Text(status.name,
+                                  style: TextStyle(
+                                      color: status == DonationStatus.Pending
+                                          ? Colors.blue
+                                          : status == DonationStatus.Picked
+                                              ? Colors.orange
+                                              : Colors.green)),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ),
@@ -55,25 +87,4 @@ class RecentFiles extends StatelessWidget {
       ),
     );
   }
-}
-
-DataRow recentFileDataRow(RecentFile fileInfo) {
-  return DataRow(
-    cells: [
-      DataCell(
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
-              child: Text(fileInfo.name ?? "#Name"),
-            ),
-          ],
-        ),
-      ),
-      DataCell(Text(fileInfo.amount ?? "0")),
-      DataCell(Text(fileInfo.balance ?? "0")),
-      DataCell(Text(fileInfo.advance ?? "0")),
-      DataCell(Text(fileInfo.more ?? "0")),
-    ],
-  );
 }

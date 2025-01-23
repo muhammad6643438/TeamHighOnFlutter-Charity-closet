@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1075315020441",
+    "project_id": "high-on-flutter-hackathon-smec",
+    "storage_bucket": "high-on-flutter-hackathon-smec.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1075315020441:android:aebfa4c6c1fc1cc20a1e08",
+        "android_client_info": {
+          "package_name": "com.example.admin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBCUMzXH3g6IJoGNvh-1pSqasaRRZKGQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1075315020441:android:0eb3fda1501167830a1e08",
+        "android_client_info": {
+          "package_name": "com.example.charity_closet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBCUMzXH3g6IJoGNvh-1pSqasaRRZKGQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

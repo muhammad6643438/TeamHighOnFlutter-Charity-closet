@@ -1,7 +1,13 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:admin/controllers/menu_controller.dart';
+import 'package:admin/core/app_router.dart';
+import 'package:admin/screens/login_screen.dart';
+import 'package:admin/screens/main/main_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SideMenu extends ConsumerWidget {
   const SideMenu({
@@ -15,44 +21,60 @@ class SideMenu extends ConsumerWidget {
       child: ListView(
         children: [
           DrawerHeader(
-            child: Image.asset("assets/images/logo.png"),
+            child: Image.asset("assets/icons/charity-closet.png"),
           ),
+          // _DrawerListTile(
+          //   title: "Dashboard",
+          //   icon: Icons.dashboard,
+          //   selected: menu.isDashboard,
+          //   onTap: menu.onDashboard,
+          // ),
+          // _DrawerListTile(
+          //   title: "Dashboard",
+          //   icon: CupertinoIcons.home,
+          //   selected: menu.isNgo,
+          //   onTap: menu.onNgo,
+          // ),
+          // _DrawerListTile(
+          //   title: "Brand",
+          //   icon: CupertinoIcons.bitcoin,
+          //   selected: menu.isBrand,
+          //   onTap: menu.onBrand,
+          // ),
+          // _DrawerListTile(
+          //   title: "Complaints",
+          //   icon: CupertinoIcons.tag,
+          //   selected: menu.isComplaint,
+          //   onTap: menu.onComplaints,
+          // ),
+          // _DrawerListTile(
+          //   title: "Users",
+          //   icon: CupertinoIcons.person_2,
+          //   selected: menu.isUsers,
+          //   onTap: menu.onUsers,
+          // ),
           _DrawerListTile(
-            title: "Dashboard",
-            svgSrc: "assets/icons/menu_dashboard.svg",
-            selected: menu.isDashboard,
-            onTap: menu.onDashboard,
+            title: "Donations",
+            icon: Icons.card_giftcard,
+            selected: menu.isDonations,
+            onTap: menu.onDonations,
           ),
-          _DrawerListTile(
-            title: "In City Orders",
-            svgSrc: "assets/icons/menu_doc.svg",
-            selected: menu.isInCity,
-            onTap: menu.onInCity,
-          ),
-          _DrawerListTile(
-            title: "Out City Orders",
-            svgSrc: "assets/icons/menu_doc.svg",
-            selected: menu.isOutCity,
-            onTap: menu.onOutCity,
-          ),
-          _DrawerListTile(
-            title: "Vessel Orders",
-            svgSrc: "assets/icons/menu_doc.svg",
-            selected: menu.isVessel,
-            onTap: menu.onVessel,
-          ),
-          _DrawerListTile(
-            title: "Diesel",
-            svgSrc: "assets/icons/menu_doc.svg",
-            selected: menu.isDiesel,
-            onTap: menu.onBillings,
-          ),
-          _DrawerListTile(
-            title: "Register Client",
-            svgSrc: "assets/icons/menu_profile.svg",
-            selected: menu.isRegister,
-            onTap: menu.onProfile,
-          ),
+          // SizedBox(
+          //   height: 300,
+          // ),
+          // _DrawerListTile(
+          //   title: "Logout",
+          //   icon: Icons.logout,
+          //   selected: menu.isDonations,
+          //   onTap: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(
+          //         builder: (context) => MainScreen(),
+          //       ),
+          //     );
+          //   },
+          // ),
         ],
       ),
     );
@@ -64,12 +86,13 @@ class _DrawerListTile extends StatelessWidget {
     Key? key,
     // For selecting those three line once press "Command+D"
     required this.title,
-    required this.svgSrc,
+    required this.icon,
     required this.onTap,
     required this.selected,
   }) : super(key: key);
 
-  final String title, svgSrc;
+  final String title;
+  final IconData icon;
   final VoidCallback onTap;
   final bool selected;
 
@@ -78,13 +101,13 @@ class _DrawerListTile extends StatelessWidget {
     return ListTile(
       onTap: onTap,
       horizontalTitleGap: 0.0,
-      leading: SvgPicture.asset(
-        svgSrc,
+      leading: Icon(
+        icon,
         color: selected ? Colors.white : Colors.white54,
-        height: 16,
+        size: 16,
       ),
       title: Text(
-        title,
+        " " + title,
         style: TextStyle(
           color: selected ? Colors.white : Colors.white54,
           fontWeight: selected ? FontWeight.bold : FontWeight.normal,

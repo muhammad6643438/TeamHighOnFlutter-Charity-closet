@@ -1,0 +1,12 @@
+const String splashScreen = '/';
+const String loginScreen = '/login';
+const String forgotPasswordScreen = '/forgot-password';
+const String signUpScreen = '/signup';
+const String profileScreen = '/profile';
+const String editProfileScreen = '/edit-profile';
+const String macroCalculatorScreen = '/macro-calculator';
+const String dashboardScreen = '/dashboard';
+const String donateScreen = '/donate';
+const String todayScreen = '/today';
+const String programScreen = '/program';
+const String complaintScreen = '/complaint';

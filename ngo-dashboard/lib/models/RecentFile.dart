@@ -1,56 +1,54 @@
 class RecentFile {
-  final String? name, amount, advance, balance, more;
+  final String? type, description, donator;
+  DonationStatus? status;
 
   RecentFile({
-    this.advance,
-    this.name,
-    this.amount,
-    this.balance,
-    this.more = "More",
+    this.donator,
+    this.type,
+    this.description,
+    this.status,
   });
 }
 
-List demoRecentFiles = [
+enum DonationType { Donation, Disposal }
+
+enum DonationStatus { Pending, Picked, Delivered }
+
+List<RecentFile> demoRecentFiles = [
   RecentFile(
-    name: "Thar Coal",
-    amount: "100,000",
-    advance: "50,000",
-    balance: "50,000",
+    type: DonationType.Donation.name,
+    status: DonationStatus.Pending,
+    description: "2 Pants, 3 Shirts",
+    donator: "Anonymous",
   ),
   RecentFile(
-    name: "Thar Coal",
-    amount: "100,000",
-    advance: "50,000",
-    balance: "50,000",
+    type: DonationType.Disposal.name,
+    status: DonationStatus.Delivered,
+    description: "1 Pants, 2 Shirts",
+    donator: "Anonymous",
   ),
   RecentFile(
-    name: "Thar Coal",
-    amount: "100,000",
-    advance: "50,000",
-    balance: "50,000",
+    type: DonationType.Donation.name,
+    status: DonationStatus.Picked,
+    description: "1 Pants, 2 Shirts",
+    donator: "Anonymous",
   ),
   RecentFile(
-    name: "Thar Coal",
-    amount: "100,000",
-    advance: "50,000",
-    balance: "50,000",
+    type: DonationType.Disposal.name,
+    status: DonationStatus.Picked,
+    description: "2 Pants, 3 Shirts",
+    donator: "Anonymous",
   ),
   RecentFile(
-    name: "Thar Coal",
-    amount: "100,000",
-    advance: "50,000",
-    balance: "50,000",
+    type: DonationType.Donation.name,
+    status: DonationStatus.Pending,
+    description: "2 Pants, 3 Shirts",
+    donator: "Anonymous",
   ),
   RecentFile(
-    name: "Thar Coal",
-    amount: "100,000",
-    advance: "50,000",
-    balance: "50,000",
-  ),
-  RecentFile(
-    name: "Thar Coal",
-    amount: "100,000",
-    advance: "50,000",
-    balance: "50,000",
+    type: DonationType.Disposal.name,
+    status: DonationStatus.Pending,
+    description: "1 Pants, 2 Shirts",
+    donator: "Anonymous",
   ),
 ];

@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="charity_closet"
+        android:label="Charity Closet"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

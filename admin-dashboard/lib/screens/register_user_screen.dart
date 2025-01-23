@@ -1,12 +1,10 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:admin/controllers/user_onboarding_controller.dart';
-import 'package:admin/core/app_router.dart';
 import 'package:admin/core/app_validators.dart';
 import 'package:admin/models/controller_model.dart';
 import 'package:admin/responsive.dart';
 import 'package:admin/screens/dashboard/components/custom_button.dart';
-import 'package:admin/screens/main/main_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

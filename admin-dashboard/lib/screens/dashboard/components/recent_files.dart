@@ -66,7 +66,13 @@ class _RecentFilesState extends State<RecentFiles> {
                               .map((DonationStatus status) {
                             return DropdownMenuItem<DonationStatus>(
                               value: status,
-                              child: Text(status.toString().split('.').last),
+                              child: Text(status.name,
+                                  style: TextStyle(
+                                      color: status == DonationStatus.Pending
+                                          ? Colors.blue
+                                          : status == DonationStatus.Picked
+                                              ? Colors.orange
+                                              : Colors.green)),
                             );
                           }).toList(),
                         ),

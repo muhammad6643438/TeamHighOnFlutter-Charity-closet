@@ -1,6 +1,7 @@
 import 'package:admin/constants.dart';
 import 'package:admin/controllers/menu_controller.dart';
 import 'package:admin/responsive.dart';
+import 'package:admin/screens/dashboard/components/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,6 +18,7 @@ class Header extends ConsumerWidget {
   Widget build(context, ref) {
     var menu = ref.watch(menuViewModel);
     return Row(
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         if (!AppSize.isDesktop(context))
           IconButton(
@@ -26,7 +28,10 @@ class Header extends ConsumerWidget {
         if (!AppSize.isMobile(context))
           Text(
             title ?? "Dashboard",
-            style: Theme.of(context).textTheme.titleLarge,
+            style: Theme.of(context)
+                .textTheme
+                .titleLarge
+                ?.copyWith(fontWeight: FontWeight.bold),
           ),
         // if (!AppSize.isMobile(context))
         //   Spacer(flex: AppSize.isDesktop(context) ? 2 : 1),
@@ -134,6 +139,7 @@ class SearchField extends StatelessWidget {
   final String? title;
   final FormFieldValidator<String>? validator;
   final TextEditingController? controller;
+  final bool obscureText;
 
   const SearchField({
     Key? key,
@@ -143,6 +149,7 @@ class SearchField extends StatelessWidget {
     this.showIcon,
     this.validator,
     this.controller,
+    this.obscureText = false,
   }) : super(key: key);
 
   @override
@@ -151,6 +158,7 @@ class SearchField extends StatelessWidget {
       width: width,
       child: TextFormField(
         controller: controller,
+        obscureText: obscureText,
         validator: validator,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         textInputAction:
@@ -187,17 +195,20 @@ class SearchField extends StatelessWidget {
 class OrderTextField extends StatelessWidget {
   final bool? showIcon;
   final String? title;
+  final TextEditingController? controller;
 
   const OrderTextField({
     Key? key,
-    this.showIcon,
     this.title,
+    this.showIcon,
+    this.controller,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width;
     return SearchField(
+      controller: controller,
       title: title,
       width: w / 5,
     );

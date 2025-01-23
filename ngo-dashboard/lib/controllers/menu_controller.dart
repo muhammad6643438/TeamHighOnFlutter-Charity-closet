@@ -1,9 +1,10 @@
-import 'package:admin/screens/dashboard_screen.dart';
-import 'package:admin/screens/diesel_screen.dart';
-import 'package:admin/screens/in_city_orders.dart';
+import 'package:admin/screens/brands.dart';
+import 'package:admin/screens/complaints.dart';
+import 'package:admin/screens/donations.dart';
 import 'package:admin/screens/out_city_orders.dart';
 import 'package:admin/screens/register_user_screen.dart';
-import 'package:admin/screens/vessel_orders.dart';
+import 'package:admin/screens/ngos.dart';
+import 'package:admin/screens/users.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,16 +20,18 @@ class MenuAppController extends ChangeNotifier {
   _currentScreen() {
     if (isRegister) {
       return RegisterUserScreen();
-    } else if (isOutCity) {
-      return OutCityOrders();
-    } else if (isInCity) {
-      return InCityOrders();
-    } else if (isVessel) {
-      return VesselOrders();
-    } else if (isDiesel) {
-      return DieselScreen();
+    } else if (isComplaint) {
+      return Complaints();
+    } else if (isBrand) {
+      return Brands();
+    } else if (isNgo) {
+      return Ngo();
+    } else if (isUsers) {
+      return Users();
+    } else if (isDonations) {
+      return Donations();
     } else {
-      return DashboardScreen();
+      return Ngo();
     }
   }
 
@@ -40,59 +43,81 @@ class MenuAppController extends ChangeNotifier {
     }
   }
 
-  bool isDashboard = true;
-  bool isOutCity = false;
-  bool isInCity = false;
-  bool isVessel = false;
-  bool isDiesel = false;
+  bool isDashboard = false;
+  bool isComplaint = false;
+  bool isBrand = false;
+  bool isNgo = false;
+  bool isUsers = false;
   bool isRegister = false;
+  bool isDonations = true;
 
   onDashboard() {
     isDashboard = true;
-    isInCity = false;
-    isOutCity = false;
-    isVessel = false;
-    isDiesel = false;
+    isBrand = false;
+    isComplaint = false;
+    isNgo = false;
+    isUsers = false;
     isRegister = false;
     notifyListeners();
   }
 
-  onOutCity() {
-    isOutCity = true;
+  onComplaints() {
+    isComplaint = true;
     isDashboard = false;
-    isInCity = false;
-    isVessel = false;
-    isDiesel = false;
+    isBrand = false;
+    isNgo = false;
+    isUsers = false;
     isRegister = false;
     notifyListeners();
   }
 
-  onInCity() {
-    isInCity = true;
+  onDonations() {
+    isDonations = true;
+    isComplaint = false;
     isDashboard = false;
-    isOutCity = false;
-    isVessel = false;
-    isDiesel = false;
+    isBrand = false;
+    isNgo = false;
+    isUsers = false;
     isRegister = false;
     notifyListeners();
   }
 
-  onVessel() {
-    isVessel = true;
+  onBrand() {
+    isBrand = true;
     isDashboard = false;
-    isInCity = false;
-    isOutCity = false;
-    isDiesel = false;
+    isComplaint = false;
+    isNgo = false;
+    isUsers = false;
+    isRegister = false;
+    notifyListeners();
+  }
+
+  onNgo() {
+    isNgo = true;
+    isDashboard = false;
+    isBrand = false;
+    isComplaint = false;
+    isUsers = false;
+    isRegister = false;
+    notifyListeners();
+  }
+
+  onUsers() {
+    isUsers = true;
+    isDashboard = false;
+    isBrand = false;
+    isComplaint = false;
+    isNgo = false;
     isRegister = false;
     notifyListeners();
   }
 
   onBillings() {
-    isDiesel = true;
+    isUsers = true;
     isDashboard = false;
-    isInCity = false;
-    isOutCity = false;
-    isVessel = false;
+    isBrand = false;
+    isComplaint = false;
+    isNgo = false;
     isRegister = false;
     notifyListeners();
   }
@@ -100,10 +125,10 @@ class MenuAppController extends ChangeNotifier {
   onProfile() {
     isRegister = true;
     isDashboard = false;
-    isInCity = false;
-    isOutCity = false;
-    isVessel = false;
-    isDiesel = false;
+    isBrand = false;
+    isComplaint = false;
+    isNgo = false;
+    isUsers = false;
     notifyListeners();
   }
 }

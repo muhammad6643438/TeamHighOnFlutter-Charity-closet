@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../constants.dart';
 import 'dashboard/components/header.dart';
 
-class OutCityOrders extends ConsumerWidget {
+class Notifications extends ConsumerWidget {
   @override
   Widget build(context, ref) {
     final Size _size = MediaQuery.of(context).size;
